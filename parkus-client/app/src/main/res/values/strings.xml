@@ -6,5 +6,9 @@
     <string name="try_again">Spróbuj ponownie</string>
     <string name="cancel">Anuluj</string>
     <string name="parking_place">Wolne miejsce</string>
+    <string name="login">Login</string>
+    <string name="password">Hasło</string>
+    <string name="register">Załóż konto</string>
     <string name="add">Dodaj</string>
+    <string name="welcome">Witaj w aplikacji parkUŚ!</string>
 </resources>
