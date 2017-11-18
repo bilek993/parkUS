@@ -29,7 +29,6 @@ public class PointInfoAdapter implements GoogleMap.InfoWindowAdapter {
     private TextView textViewPerson;
     private TextView textViewInfo1;
     private TextView textViewInfo2;
-    private TextView textViewInfo3;
     private ImageView imageViewPhoto;
 
     private List<ParkingPoint> points;
@@ -42,7 +41,6 @@ public class PointInfoAdapter implements GoogleMap.InfoWindowAdapter {
         textViewPerson = contentsView.findViewById(R.id.textViewPerson);
         textViewInfo1 = contentsView.findViewById(R.id.textViewInfo1);
         textViewInfo2 = contentsView.findViewById(R.id.textViewInfo2);
-        textViewInfo3 = contentsView.findViewById(R.id.textViewInfo3);
         imageViewPhoto = contentsView.findViewById(R.id.imageViewPhoto);
     }
 
