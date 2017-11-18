@@ -1,7 +1,9 @@
-package com.team_no_5.parkus;
+package com.team_no_5.parkus.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.team_no_5.parkus.R;
 
 public class BeginActivity extends AppCompatActivity {
 
