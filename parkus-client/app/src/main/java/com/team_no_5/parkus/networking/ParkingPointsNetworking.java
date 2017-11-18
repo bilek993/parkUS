@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.team_no_5.parkus.networking.items.ParkingPoint;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -25,7 +26,7 @@ public class ParkingPointsNetworking {
 
     public void loadParkingPoints(Callable<Void> onSuccess,
                                  Callable<Void> onFinish) {
-        RestService restService = RestManager.getInstance();
+        /*RestService restService = RestManager.getInstance();
         Call<List<ParkingPoint>> call = restService.parkingPoints();
 
         call.enqueue(new AdvancedCallback<List<ParkingPoint>>(context) {
@@ -64,7 +65,21 @@ public class ParkingPointsNetworking {
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
+        parkingPoints = new ArrayList<>();
+        ParkingPoint p1 = new ParkingPoint();
+        p1.setLatitude(40.283076);
+        p1.setLongitude(15.028243);
+        ParkingPoint p2 = new ParkingPoint();
+        p2.setLatitude(50.283076);
+        p2.setLongitude(19.028243);
+        parkingPoints.add(p1);
+        parkingPoints.add(p2);
+        try {
+            onSuccess.call();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public List<ParkingPoint> getParkingPoints() {
