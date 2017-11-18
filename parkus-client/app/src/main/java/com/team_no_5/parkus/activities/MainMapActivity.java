@@ -9,6 +9,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -66,7 +68,8 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
 
                     for (ParkingPoint p : parkingPoints) {
                         LatLng coords = new LatLng(p.getLatitude(), p.getLongitude());
-                        Marker marker = map.addMarker(new MarkerOptions().position(coords));
+                        Marker marker = map.addMarker(new MarkerOptions().position(coords)
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_point)));
                         marker.setTag(p);
                         map.moveCamera(CameraUpdateFactory.newLatLng(coords));
                     }
