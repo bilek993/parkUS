@@ -14,7 +14,7 @@
           <Property Name="Latitude" Type="float" />
           <Property Name="Photo" Type="image" />
           <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -28,7 +28,7 @@
           <Property Name="Points" Type="int" />
         </EntityType>
         <Association Name="FK_Users">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="ParkingPoints" Type="Self.ParkingPoints" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -68,7 +68,7 @@
           <Property Name="Latitude" Type="Double" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
           <NavigationProperty Name="User" Relationship="DatabaseMainModel.FK_Users" FromRole="ParkingPoints" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
@@ -84,7 +84,7 @@
           <NavigationProperty Name="ParkingPoints" Relationship="DatabaseMainModel.FK_Users" FromRole="User" ToRole="ParkingPoints" />
         </EntityType>
         <Association Name="FK_Users">
-          <End Type="DatabaseMainModel.User" Role="User" Multiplicity="1" />
+          <End Type="DatabaseMainModel.User" Role="User" Multiplicity="0..1" />
           <End Type="DatabaseMainModel.ParkingPoints" Role="ParkingPoints" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">

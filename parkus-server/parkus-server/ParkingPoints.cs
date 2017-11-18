@@ -19,7 +19,7 @@ namespace parkus_server
         public Nullable<double> Latitude { get; set; }
         public byte[] Photo { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
-        public int UserId { get; set; }
+        public Nullable<int> UserId { get; set; }
     
         public virtual User User { get; set; }
     }
