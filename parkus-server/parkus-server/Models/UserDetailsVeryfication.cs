@@ -26,11 +26,8 @@ namespace parkus_server.Models
 
         public static bool CheckUserExistance(UserItem user)
         {
-            return CheckUserExistance(user.Username);
-        }
+            string username = user.Username;
 
-        public static bool CheckUserExistance(string username)
-        {
             using (var database = new DatabaseMainEntities())
             {
                 return database.User.Any(u => u.Username == username);
