@@ -26,11 +26,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.team_no_5.parkus.R;
 import com.team_no_5.parkus.Utilities.AddressesHelper;
 import com.team_no_5.parkus.Utilities.PhotosHelper;
+import com.team_no_5.parkus.networking.ParkingPointsNetworking;
 import com.team_no_5.parkus.networking.items.ParkingPoint;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -129,7 +131,13 @@ public class AddNewParkingPointActivity extends AppCompatActivity {
     }
 
     private void saveParkingPoint() {
-
+        ParkingPointsNetworking parkingPointsNetworking = new ParkingPointsNetworking(this);
+        parkingPointsNetworking.addParkingPoint(parkingPoint, () -> {
+                    return null;
+                },
+                () -> {
+                    return null;
+                });
     }
 
     @OnClick(R.id.imageButtonAddPhoto)
@@ -147,8 +155,7 @@ public class AddNewParkingPointActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.item_add_point) {
-            //saveParkingPoint();
-            takePhoto();
+            saveParkingPoint();
 
             return true;
         } else {

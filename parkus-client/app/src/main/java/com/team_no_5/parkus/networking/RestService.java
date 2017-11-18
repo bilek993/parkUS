@@ -5,8 +5,10 @@ import com.team_no_5.parkus.networking.items.ParkingPoint;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.PUT;
 
 /**
  * Created by Michal on 18.11.2017.
@@ -18,4 +20,10 @@ public interface RestService {
     })
     @GET("api/ParkingPoints")
     Call<List<ParkingPoint>> parkingPoints();
+
+    @Headers({
+            "Content-Type: application/json"
+    })
+    @PUT("api/ParkingPoints")
+    Call<Void> addParkingPoint(@Body ParkingPoint parkingPoint);
 }
