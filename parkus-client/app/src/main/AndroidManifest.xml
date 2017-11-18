@@ -27,11 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activities.MainMapActivity"></activity>
-
-        <activity android:name=".activities.AddNewParkingPointActivity"></activity>
-
+        <activity android:name=".activities.MainMapActivity" />
+        <activity android:name=".activities.AddNewParkingPointActivity" />
+        <activity android:name=".activities.LoginActivity"></activity>
     </application>
 
 </manifest>
