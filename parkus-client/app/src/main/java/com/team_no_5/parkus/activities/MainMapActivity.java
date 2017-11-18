@@ -1,5 +1,6 @@
 package com.team_no_5.parkus.activities;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainMapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -80,5 +82,11 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
                     return null;
                 });
 
+    }
+
+    @OnClick(R.id.floatingActionButton)
+    void onFloatingActionButtonAddNewPointClick() {
+        Intent intent = new Intent(this, AddNewParkingPointActivity.class);
+        startActivity(intent);
     }
 }
