@@ -27,6 +27,9 @@ public class ParkingPoint {
     @SerializedName("CreatedOn")
     @Expose
     private String createdOn;
+    @SerializedName("UserName")
+    @Expose(serialize = false)
+    private String userName;
 
     public int getId() {
         return id;
@@ -66,5 +69,13 @@ public class ParkingPoint {
 
     public void setCreatedOn(Calendar createdOn) {
         this.createdOn = DateTimeConverter.calendarToString(createdOn, DateTimeConverter.DATE_TIME_SERVER_FORMAT);
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

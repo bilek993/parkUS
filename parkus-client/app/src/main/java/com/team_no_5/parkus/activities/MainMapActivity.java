@@ -10,6 +10,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.team_no_5.parkus.R;
 import com.team_no_5.parkus.Utilities.AdvancedCallable;
@@ -41,7 +42,7 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-        map.setInfoWindowAdapter(new PointInfoAdapter(getLayoutInflater()));
+        map.setInfoWindowAdapter(new PointInfoAdapter(this, getLayoutInflater()));
 
         ParkingPointsNetworking parkingPointsNetworking = new ParkingPointsNetworking(this);
         parkingPointsNetworking.loadParkingPoints(
@@ -50,7 +51,8 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
 
                     for (ParkingPoint p : parkingPoints) {
                         LatLng coords = new LatLng(p.getLatitude(), p.getLongitude());
-                        map.addMarker(new MarkerOptions().position(coords).title("Marker in Sydney"));
+                        Marker marker = map.addMarker(new MarkerOptions().position(coords));
+                        marker.setTag(p);
                         map.moveCamera(CameraUpdateFactory.newLatLng(coords));
                     }
 
