@@ -2,6 +2,10 @@ package com.team_no_5.parkus.networking.items;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.team_no_5.parkus.Utilities.DateTimeConverter;
+
+import java.text.ParseException;
+import java.util.Calendar;
 
 /**
  * Created by Michal on 18.11.2017.
@@ -9,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class ParkingPoint {
     @SerializedName("Id")
-    @Expose
+    @Expose(serialize = false)
     private int id;
     @SerializedName("Longitude")
     @Expose
@@ -56,11 +60,11 @@ public class ParkingPoint {
         this.photo = photo;
     }
 
-    public String getCreatedOn() {
-        return createdOn;
+    public Calendar getCreatedOn() throws ParseException {
+        return DateTimeConverter.stringToCalendar(createdOn, DateTimeConverter.DATE_TIME_SERVER_FORMAT);
     }
 
-    public void setCreatedOn(String createdOn) {
-        this.createdOn = createdOn;
+    public void setCreatedOn(Calendar createdOn) {
+        this.createdOn = DateTimeConverter.calendarToString(createdOn, DateTimeConverter.DATE_TIME_SERVER_FORMAT);
     }
 }
