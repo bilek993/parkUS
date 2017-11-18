@@ -30,7 +30,7 @@ public class BeginActivity extends AppCompatActivity {
 
 
     private void startMainMapActivity() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, MainMapActivity.class);
         startActivity(intent);
     }
 

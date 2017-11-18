@@ -40,7 +40,7 @@
         <activity android:name=".activities.AddNewParkingPointActivity" />
         <activity
             android:name=".activities.LoginActivity"
-            android:theme="@style/StartTheme"/>
+            android:theme="@style/LoginTheme"/>
     </application>
 
 </manifest>
