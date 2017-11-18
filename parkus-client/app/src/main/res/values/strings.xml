@@ -11,4 +11,6 @@
     <string name="register">Załóż konto</string>
     <string name="add">Dodaj</string>
     <string name="welcome">Witaj w aplikacji parkUŚ!</string>
+    <string name="name">Imie</string>
+    <string name="surname">Nazwisko</string>
 </resources>
