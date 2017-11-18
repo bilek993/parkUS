@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6dca0105d6a6490cae302ce06e9ad3dd" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabaseMainModel.ParkingPoints" Width="1.5" PointX="6.125" PointY="2.25" />
-        <EntityTypeShape EntityType="DatabaseMainModel.User" Width="1.5" PointX="3.875" PointY="2.25" />
+        <EntityTypeShape EntityType="DatabaseMainModel.ParkingPoints" Width="1.5" PointX="6.25" PointY="1.5" />
+        <EntityTypeShape EntityType="DatabaseMainModel.User" Width="1.5" PointX="4" PointY="1.5" />
         <AssociationConnector Association="DatabaseMainModel.FK_Users" />
       </Diagram>
     </edmx:Diagrams>

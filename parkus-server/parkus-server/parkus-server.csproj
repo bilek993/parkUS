@@ -108,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ParkingPointsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,6 +128,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelMain.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ParkingPointItem.cs" />
+    <Compile Include="Models\Points.cs" />
+    <Compile Include="Models\Sha256Hashing.cs" />
+    <Compile Include="Models\UserDetailsVeryfication.cs" />
+    <Compile Include="Models\UserItem.cs" />
     <Compile Include="ParkingPoints.cs">
       <DependentUpon>ModelMain.tt</DependentUpon>
     </Compile>
@@ -150,10 +157,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
