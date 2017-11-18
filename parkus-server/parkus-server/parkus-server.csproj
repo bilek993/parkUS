@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ParkingPointsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -128,7 +129,10 @@
       <DependentUpon>ModelMain.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ParkingPointItem.cs" />
+    <Compile Include="Models\Points.cs" />
     <Compile Include="Models\Sha256Hashing.cs" />
+    <Compile Include="Models\UserDetailsVeryfication.cs" />
+    <Compile Include="Models\UserItem.cs" />
     <Compile Include="ParkingPoints.cs">
       <DependentUpon>ModelMain.tt</DependentUpon>
     </Compile>
