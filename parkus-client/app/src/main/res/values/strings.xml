@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">parkus-client</string>
     <string name="title_activity_main_map">Map</string>
+    <string name="network_error_no_code">OnFailure</string>
+    <string name="encountered_problem">Napotkano problem</string>
+    <string name="try_again">Spróbuj ponownie</string>
+    <string name="cancel">Anuluj</string>
 </resources>
