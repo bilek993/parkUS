@@ -11,10 +11,10 @@
     <style name="StartTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowContentTransitions">true</item>
         <item name="colorPrimary">@color/primary</item>
-        <item name="android:colorBackground">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
         <item name="android:navigationBarColor">@color/primary_dark</item>
+        <item name="colorControlNormal">@color/primary_light</item>
     </style>
 
 </resources>
