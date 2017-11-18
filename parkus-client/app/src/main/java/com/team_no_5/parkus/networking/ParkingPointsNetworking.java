@@ -85,4 +85,46 @@ public class ParkingPointsNetworking {
     public List<ParkingPoint> getParkingPoints() {
         return parkingPoints;
     }
+
+    public void addParkingPoint(ParkingPoint parkingPoint, Callable<Void> onSuccess, Callable<Void> onFinish) {
+        RestService restService = RestManager.getInstance();
+        Call<Void> call = restService.addParkingPoint(parkingPoint);
+
+        call.enqueue(new AdvancedCallback<Void>(context) {
+            @Override
+            public void onRetry() {
+                loadParkingPoints(onSuccess, onFinish);
+            }
+
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                super.onResponse(call, response);
+
+                if (response.isSuccessful()) {
+                    try {
+                        onSuccess.call();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        onFinish.call();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                super.onFailure(call, t);
+
+                try {
+                    onFinish.call();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

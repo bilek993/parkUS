@@ -25,7 +25,7 @@ public class ParkingPoint {
     @Expose
     private byte[] photo;
     @SerializedName("CreatedOn")
-    @Expose
+    @Expose(serialize = false)
     private String createdOn;
     @SerializedName("UserName")
     @Expose(serialize = false)
