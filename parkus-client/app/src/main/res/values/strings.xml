@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">parkus-client</string>
+    <string name="app_name">parkUŚ</string>
     <string name="title_activity_main_map">Map</string>
     <string name="network_error_no_code">OnFailure</string>
     <string name="encountered_problem">Napotkano problem</string>
