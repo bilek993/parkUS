@@ -59,7 +59,7 @@ public class PointInfoAdapter implements GoogleMap.InfoWindowAdapter {
     public View getInfoContents(Marker marker) {
         ParkingPoint point = (ParkingPoint)marker.getTag();
 
-        textViewPerson.setText(point.getUserName());
+        textViewPerson.setText(context.getString(R.string.parking_place));
 
 
         List<Address> addresses = AddressesHelper.getAddress(context,
