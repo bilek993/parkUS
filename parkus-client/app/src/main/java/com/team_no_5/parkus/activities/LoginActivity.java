@@ -1,6 +1,7 @@
 package com.team_no_5.parkus.activities;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText editTextLogin;
     @BindView(R.id.editTextPassword)
     EditText editTextPassword;
+    @BindView(R.id.floatingActionButtonLogin)
+    FloatingActionButton buttonLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        buttonLogin.hide();
+
         User user = new User(userName, password);
 
         LoginNetworking loginNetworking = new LoginNetworking(this);
@@ -69,6 +74,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     return null;
                 }, () -> {
+                    buttonLogin.show();
+                    
                     return null;
                 });
     }
