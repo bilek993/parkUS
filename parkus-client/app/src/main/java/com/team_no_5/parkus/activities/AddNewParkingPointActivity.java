@@ -25,6 +25,7 @@ import android.widget.TextView;
 import com.google.android.gms.maps.model.LatLng;
 import com.team_no_5.parkus.R;
 import com.team_no_5.parkus.Utilities.AddressesHelper;
+import com.team_no_5.parkus.Utilities.IntentExtras;
 import com.team_no_5.parkus.Utilities.PhotosHelper;
 import com.team_no_5.parkus.networking.ParkingPointsNetworking;
 import com.team_no_5.parkus.networking.items.ParkingPoint;
@@ -133,6 +134,10 @@ public class AddNewParkingPointActivity extends AppCompatActivity {
     private void saveParkingPoint() {
         ParkingPointsNetworking parkingPointsNetworking = new ParkingPointsNetworking(this);
         parkingPointsNetworking.addParkingPoint(parkingPoint, () -> {
+                    Intent resultIntent = new Intent();
+                    setResult(RESULT_OK, resultIntent);
+
+                    finish();
                     return null;
                 },
                 () -> {

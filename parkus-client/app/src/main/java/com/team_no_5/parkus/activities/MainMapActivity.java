@@ -41,6 +41,8 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
     private List<ParkingPoint> parkingPoints;
     private PointsNetworking pointsNetworking;
 
+    private static final int ADD_POINT_ACTIVITY_REQUEST_CODE = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,12 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+
+        initMap();
+        loadParkingPoints();
+    }
+
+    private void initMap() {
         map.setInfoWindowAdapter(new PointInfoAdapter(this, getLayoutInflater()));
 
         map.setOnMarkerClickListener(marker -> {
@@ -75,18 +83,16 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
             return;
         }
         map.setMyLocationEnabled(true);
+    }
 
+    private void loadParkingPoints() {
         ParkingPointsNetworking parkingPointsNetworking = new ParkingPointsNetworking(this);
         parkingPointsNetworking.loadParkingPoints(
                 () -> {
                     parkingPoints = parkingPointsNetworking.getParkingPoints();
 
                     for (ParkingPoint p : parkingPoints) {
-                        LatLng coords = new LatLng(p.getLatitude(), p.getLongitude());
-                        Marker marker = map.addMarker(new MarkerOptions().position(coords)
-                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_point)));
-                        marker.setTag(p);
-                        map.moveCamera(CameraUpdateFactory.newLatLng(coords));
+                        addMarker(p);
                     }
 
                     return null;
@@ -94,7 +100,6 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
                 () -> {
                     return null;
                 });
-
     }
 
     private void loadUserPointsNumber() {
@@ -108,9 +113,29 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
                 });
     }
 
+    private void addMarker(ParkingPoint point) {
+        LatLng coords = new LatLng(point.getLatitude(), point.getLongitude());
+        Marker marker = map.addMarker(new MarkerOptions().position(coords)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_point)));
+        marker.setTag(point);
+        map.moveCamera(CameraUpdateFactory.newLatLng(coords));
+    }
+
     @OnClick(R.id.floatingActionButton)
     void onFloatingActionButtonAddNewPointClick() {
         Intent intent = new Intent(this, AddNewParkingPointActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, ADD_POINT_ACTIVITY_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == ADD_POINT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            if (bundle != null) {
+                map.clear();
+
+                loadParkingPoints();
+            }
+        }
     }
 }
