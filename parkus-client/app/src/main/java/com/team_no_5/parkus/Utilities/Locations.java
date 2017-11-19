@@ -20,6 +20,13 @@ import com.google.android.gms.maps.model.LatLng;
 public class Locations {
     public static final int ACCESS_FINE_LOCATION_REQUEST_CODE = 0;
 
+    public static final double LOCATION_MARGIN = 0.00005;
+
+    public static double calculateDifference(LatLng latLng1, LatLng latLng2) {
+        return Math.sqrt((latLng1.latitude - latLng2.latitude) * (latLng1.latitude - latLng2.latitude) +
+                (latLng1.longitude - latLng2.longitude) * (latLng1.longitude - latLng2.longitude));
+    }
+
     public static boolean requestLocationPermission(AppCompatActivity activity) {
         if (ContextCompat.checkSelfPermission(activity.getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {

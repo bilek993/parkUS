@@ -50,5 +50,5 @@ public interface RestService {
             "Content-Type: application/json"
     })
     @POST("api/Points")
-    Call<Integer> updatePoints(@Header("Authorization") String authorization, @Body Integer parkingPointId);
+    Call<Void> updatePoints(@Header("Authorization") String authorization, @Body Integer parkingPointId);
 }
