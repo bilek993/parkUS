@@ -128,6 +128,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelMain.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\BasicAuthenticationAttribute.cs" />
     <Compile Include="Models\ParkingPointItem.cs" />
     <Compile Include="Models\Points.cs" />
     <Compile Include="Models\Sha256Hashing.cs" />

@@ -10,6 +10,7 @@ namespace parkus_server.Controllers
 {
     public class ParkingPointsController : ApiController
     {
+        [BasicAuthentication]
         public List<ParkingPointItem> Get()
         {
             using (var database = new DatabaseMainEntities())
@@ -26,6 +27,7 @@ namespace parkus_server.Controllers
             }
         }
 
+        [BasicAuthentication]
         public void Put([FromBody] ParkingPointItem parkingPointItemNew)
         {
             using (var database = new DatabaseMainEntities())
