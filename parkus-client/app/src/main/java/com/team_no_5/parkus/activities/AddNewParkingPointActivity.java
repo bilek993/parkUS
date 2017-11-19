@@ -22,7 +22,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.team_no_5.parkus.R;
 import com.team_no_5.parkus.Utilities.AddressesHelper;
 import com.team_no_5.parkus.Utilities.PhotosHelper;
@@ -38,7 +46,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AddNewParkingPointActivity extends AppCompatActivity {
+public class AddNewParkingPointActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     @BindView(R.id.textViewInfo1)
     TextView textViewInfo1;
@@ -46,6 +54,8 @@ public class AddNewParkingPointActivity extends AppCompatActivity {
     TextView textViewInfo2;
     @BindView(R.id.imageButtonAddPhoto)
     ImageButton imageButtonAddPhoto;
+
+    private GoogleMap map;
 
     private ParkingPoint parkingPoint = new ParkingPoint();
     private PhotosHelper photosHelper = new PhotosHelper();
@@ -59,7 +69,34 @@ public class AddNewParkingPointActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
         getCurrentLoaction(this);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+
+        map.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+
+            }
+
+            @Override
+            public void onMarkerDrag(Marker marker) {
+
+            }
+
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+                LatLng latLng = marker.getPosition();
+                parkingPoint.setLatitude(latLng.latitude);
+                parkingPoint.setLongitude(latLng.longitude);
+            }
+        });
     }
 
     private void getCurrentLoaction(AppCompatActivity activity) {
@@ -102,12 +139,28 @@ public class AddNewParkingPointActivity extends AppCompatActivity {
         parkingPoint.setLatitude(latitude);
         parkingPoint.setLongitude(longitude);
 
+        addMarker(new LatLng(latitude, longitude));
+
         List<Address> addresses = AddressesHelper.getAddress(this,
                 new LatLng(latitude, longitude));
         if (addresses.size() > 0) {
             textViewInfo1.setText(addresses.get(0).getAddressLine(0));
             textViewInfo2.setText(addresses.get(0).getAddressLine(1));
         }
+    }
+
+    private void addMarker(LatLng latLng) {
+        Marker marker = map.addMarker(new MarkerOptions().position(latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_point))
+                .draggable(true));
+        CameraPosition cameraPosition = CameraPosition.builder()
+                .target(latLng)
+                .zoom(15)
+                .build();
+
+        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition),
+                2000, null);
+
     }
 
     private void takePhoto() {
