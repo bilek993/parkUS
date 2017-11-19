@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.team_no_5.parkus.R;
+import com.team_no_5.parkus.Utilities.LocalSharedStorage;
 import com.team_no_5.parkus.networking.LoginNetworking;
 import com.team_no_5.parkus.networking.items.User;
 
@@ -61,6 +62,8 @@ public class LoginActivity extends AppCompatActivity {
         LoginNetworking loginNetworking = new LoginNetworking(this);
         loginNetworking.login(user,
                 () -> {
+                    LocalSharedStorage.saveUserAuthorizationData(this, userName, password);
+
                     startMainActivity();
                     finish();
 

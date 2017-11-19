@@ -13,7 +13,7 @@ import java.util.Calendar;
 
 public class ParkingPoint {
     @SerializedName("Id")
-    @Expose(serialize = false)
+    @Expose
     private int id;
     @SerializedName("Longitude")
     @Expose
@@ -25,11 +25,11 @@ public class ParkingPoint {
     @Expose
     private byte[] photo;
     @SerializedName("CreatedOn")
-    @Expose(serialize = false)
+    @Expose
     private String createdOn;
-    @SerializedName("UserName")
-    @Expose(serialize = false)
-    private String userName;
+    @SerializedName("Creator")
+    @Expose
+    private String creator;
 
     public int getId() {
         return id;
@@ -71,11 +71,11 @@ public class ParkingPoint {
         this.createdOn = DateTimeConverter.calendarToString(createdOn, DateTimeConverter.DATE_TIME_SERVER_FORMAT);
     }
 
-    public String getUserName() {
-        return userName;
+    /*public String getCreator() {
+        return creator;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }*/
 }
