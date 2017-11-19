@@ -133,6 +133,10 @@ public class AddNewParkingPointActivity extends AppCompatActivity {
     private void saveParkingPoint() {
         ParkingPointsNetworking parkingPointsNetworking = new ParkingPointsNetworking(this);
         parkingPointsNetworking.addParkingPoint(parkingPoint, () -> {
+                    Intent resultIntent = new Intent();
+                    setResult(RESULT_OK, resultIntent);
+
+                    finish();
                     return null;
                 },
                 () -> {

@@ -20,4 +20,5 @@
     <string name="login2">Logowanie</string>
     <string name="login_error">Błędny login lub hasło</string>
     <string name="empty_fields">Uzupełnij wszystkie pola</string>
+    <string name="user_points">Posiadasz %d punktów</string>
 </resources>

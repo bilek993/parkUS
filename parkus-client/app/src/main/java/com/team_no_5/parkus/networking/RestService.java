@@ -39,4 +39,16 @@ public interface RestService {
 
     @POST("api/Users")
     Call<Boolean> login(@Body User user);
+
+    @Headers({
+            "Content-Type: application/json"
+    })
+    @GET("api/Points")
+    Call<Integer> userPoints(@Header("Authorization") String authorization);
+
+    @Headers({
+            "Content-Type: application/json"
+    })
+    @POST("api/Points")
+    Call<Void> updatePoints(@Header("Authorization") String authorization, @Body Integer parkingPointId);
 }
