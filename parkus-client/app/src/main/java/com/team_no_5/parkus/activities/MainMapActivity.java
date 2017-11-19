@@ -30,6 +30,8 @@ import com.team_no_5.parkus.networking.ParkingPointsNetworking;
 import com.team_no_5.parkus.networking.PointsNetworking;
 import com.team_no_5.parkus.networking.items.ParkingPoint;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,7 +45,7 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
 
     private GoogleMap map;
 
-    private List<ParkingPoint> parkingPoints;
+    private List<ParkingPoint> parkingPoints = Collections.emptyList();
     private PointsNetworking pointsNetworking;
 
     private static final int ADD_POINT_ACTIVITY_REQUEST_CODE = 0;
