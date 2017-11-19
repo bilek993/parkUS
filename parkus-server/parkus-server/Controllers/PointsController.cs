@@ -21,5 +21,16 @@ namespace parkus_server.Controllers
                 return user.Points ?? 0;
             }
         }
+
+        [BasicAuthentication]
+        public void Post([FromBody] int parkingPointId)
+        {
+            using (var database = new DatabaseMainEntities())
+            {
+                string username = Thread.CurrentPrincipal.Identity.Name;
+                database.User.FirstOrDefault(u => u.Username == username).Points -= 10;
+                database.ParkingPoints.FirstOrDefault(pp => pp.Id == parkingPointId).User.Points += 9;
+            }
+        }
     }
 }
