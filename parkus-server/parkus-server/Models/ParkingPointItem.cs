@@ -8,6 +8,7 @@ namespace parkus_server.Models
     public class ParkingPointItem
     {
         public int Id { get; set; }
+        public string Creator { get; set; }
         public double? Longitude { get; set; }
         public double? Latitude { get; set; }
         public byte[] Photo { get; set; }

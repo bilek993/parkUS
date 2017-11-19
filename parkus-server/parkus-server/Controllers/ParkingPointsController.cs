@@ -20,6 +20,7 @@ namespace parkus_server.Controllers
                     .Select(pp => new ParkingPointItem
                     {
                         Id = pp.Id,
+                        Creator = pp.User.Name + " " + pp.User.Surname,
                         Longitude = pp.Longitude,
                         Latitude = pp.Latitude,
                         Photo = pp.Photo,
