@@ -22,6 +22,7 @@ import com.team_no_5.parkus.R;
 import com.team_no_5.parkus.Utilities.Locations;
 import com.team_no_5.parkus.adapters.PointInfoAdapter;
 import com.team_no_5.parkus.networking.ParkingPointsNetworking;
+import com.team_no_5.parkus.networking.PointsNetworking;
 import com.team_no_5.parkus.networking.items.ParkingPoint;
 
 import java.util.List;
@@ -38,6 +39,7 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
     private GoogleMap map;
 
     private List<ParkingPoint> parkingPoints;
+    private PointsNetworking pointsNetworking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,9 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
         setContentView(R.layout.activity_main_map);
 
         ButterKnife.bind(this);
+
+        pointsNetworking = new PointsNetworking(this);
+        loadUserPointsNumber();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -90,6 +95,17 @@ public class MainMapActivity extends AppCompatActivity implements OnMapReadyCall
                     return null;
                 });
 
+    }
+
+    private void loadUserPointsNumber() {
+        pointsNetworking.loadUserPoints(() -> {
+                    getSupportActionBar().setSubtitle(String.format(getString(R.string.user_points), pointsNetworking.getPointsNumber()));
+
+                    return null;
+                },
+                () -> {
+                    return null;
+                });
     }
 
     @OnClick(R.id.floatingActionButton)
