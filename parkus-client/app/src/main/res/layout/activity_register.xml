@@ -31,7 +31,7 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/floatingActionButtonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -54,10 +54,12 @@
         app:layout_constraintRight_toRightOf="@id/guideline4">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:hint="@string/login" />
+            android:hint="@string/login"
+            android:singleLine="true"
+            android:textColor="@android:color/white" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -71,10 +73,13 @@
         app:layout_constraintRight_toRightOf="@id/guideline4">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="@android:color/white" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -89,10 +94,12 @@
         app:layout_constraintTop_toBottomOf="@id/guideline2">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:hint="@string/name" />
+            android:hint="@string/name"
+            android:singleLine="true"
+            android:textColor="@android:color/white" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -107,10 +114,12 @@
         app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutUsername">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextSurname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:hint="@string/surname" />
+            android:hint="@string/surname"
+            android:singleLine="true"
+            android:textColor="@android:color/white" />
     </android.support.design.widget.TextInputLayout>
 
     <TextView

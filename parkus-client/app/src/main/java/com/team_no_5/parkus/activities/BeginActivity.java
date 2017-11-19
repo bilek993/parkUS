@@ -14,8 +14,6 @@ import com.team_no_5.parkus.Utilities.Locations;
 
 public class BeginActivity extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +25,8 @@ public class BeginActivity extends AppCompatActivity {
         }
     }
 
-
-
     private void startMainMapActivity() {
-        Intent intent = new Intent(this, MainMapActivity.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 

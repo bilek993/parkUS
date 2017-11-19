@@ -1,6 +1,7 @@
 package com.team_no_5.parkus.networking;
 
 import com.team_no_5.parkus.networking.items.ParkingPoint;
+import com.team_no_5.parkus.networking.items.User;
 
 import java.util.List;
 
@@ -26,4 +27,10 @@ public interface RestService {
     })
     @PUT("api/ParkingPoints")
     Call<Void> addParkingPoint(@Body ParkingPoint parkingPoint);
+
+    @Headers({
+            "Content-Type: application/json"
+    })
+    @PUT("api/Users")
+    Call<Boolean> addNewUser(@Body User user);
 }

@@ -13,4 +13,8 @@
     <string name="welcome">Witaj w aplikacji parkUŚ!</string>
     <string name="name">Imie</string>
     <string name="surname">Nazwisko</string>
+    <string name="register2">Dodawanie konta</string>
+    <string name="user_created">Konto zostało utworzone</string>
+    <string name="user_not_created">Wystąpił błąd podczas tworzenia nowego konta. Być może taki użytkownik już istnieje.</string>
+    <string name="ok">Ok</string>
 </resources>
