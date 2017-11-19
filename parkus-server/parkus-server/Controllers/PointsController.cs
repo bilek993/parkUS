@@ -30,6 +30,10 @@ namespace parkus_server.Controllers
                 string username = Thread.CurrentPrincipal.Identity.Name;
                 database.User.FirstOrDefault(u => u.Username == username).Points -= 10;
                 database.ParkingPoints.FirstOrDefault(pp => pp.Id == parkingPointId).User.Points += 9;
+
+                ParkingPoints point = database.ParkingPoints.FirstOrDefault(pp => pp.Id == id);
+                database.ParkingPoints.Remove(point);
+                database.SaveChanges();
             }
         }
     }
