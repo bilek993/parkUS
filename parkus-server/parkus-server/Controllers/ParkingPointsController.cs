@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 
 namespace parkus_server.Controllers
@@ -34,12 +35,16 @@ namespace parkus_server.Controllers
             {
                 DateTime currentDate = DateTime.Now;
 
+                string username = Thread.CurrentPrincipal.Identity.Name;
+                User user = database.User.FirstOrDefault(u => u.Username == username);
+
                 var parkingPoint = new ParkingPoints
                 {
                     Longitude = parkingPointItemNew.Longitude,
                     Latitude = parkingPointItemNew.Latitude,
                     Photo = parkingPointItemNew.Photo,
-                    CreatedOn = currentDate
+                    CreatedOn = currentDate,
+                    User = user
                 };
 
                 database.ParkingPoints.Add(parkingPoint);
