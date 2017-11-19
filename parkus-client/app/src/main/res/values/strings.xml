@@ -17,4 +17,7 @@
     <string name="user_created">Konto zostało utworzone</string>
     <string name="user_not_created">Wystąpił błąd podczas tworzenia nowego konta. Być może taki użytkownik już istnieje.</string>
     <string name="ok">Ok</string>
+    <string name="login2">Logowanie</string>
+    <string name="login_error">Błędny login lub hasło</string>
+    <string name="empty_fields">Uzupełnij wszystkie pola</string>
 </resources>

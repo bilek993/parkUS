@@ -93,7 +93,7 @@ public class ParkingPointsNetworking {
         call.enqueue(new AdvancedCallback<Void>(context) {
             @Override
             public void onRetry() {
-                loadParkingPoints(onSuccess, onFinish);
+                addParkingPoint(parkingPoint, onSuccess, onFinish);
             }
 
             @Override
