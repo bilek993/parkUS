@@ -39,11 +39,6 @@ namespace parkus_server.Controllers
 
         public bool Post([FromBody] UserItem user)
         {
-            if (UserDetailsVeryfication.CheckForEmptValues(user))
-            {
-                return false;
-            }
-
             return UserDetailsVeryfication.VerifyCredentials(user);
         }
     }
