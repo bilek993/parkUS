@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import com.team_no_5.parkus.R;
+import com.team_no_5.parkus.Utilities.LocalSharedStorage;
 import com.team_no_5.parkus.networking.LoginNetworking;
 import com.team_no_5.parkus.networking.items.User;
 
@@ -42,10 +43,13 @@ public class RegisterActivity extends AppCompatActivity {
     void onFloatingActionButtonRegisterClick() {
         LoginNetworking loginNetworking = new LoginNetworking(this);
 
-        User user = new User(editTextLogin.getText().toString(),
+        String userName = editTextLogin.getText().toString();
+        String password = editTextPassword.getText().toString();
+
+        User user = new User(userName,
                 editTextName.getText().toString(),
                 editTextSurname.getText().toString(),
-                editTextPassword.getText().toString());
+                password);
 
         loginNetworking.addNewUser(user,
                 () -> {
@@ -54,6 +58,8 @@ public class RegisterActivity extends AppCompatActivity {
                             .setTitle(getString(R.string.register2))
                             .setMessage(getString(R.string.user_created))
                             .setPositiveButton(getText(R.string.ok), (dialogInterface, i) -> {
+
+                                LocalSharedStorage.saveUserAuthorizationData(this, userName, password);
                                 openMainActivity();
                                 finish();
                             })

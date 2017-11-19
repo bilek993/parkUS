@@ -2,6 +2,7 @@ package com.team_no_5.parkus.networking;
 
 import android.content.Context;
 
+import com.team_no_5.parkus.Utilities.LocalSharedStorage;
 import com.team_no_5.parkus.networking.items.ParkingPoint;
 
 import java.util.ArrayList;
@@ -26,8 +27,10 @@ public class ParkingPointsNetworking {
 
     public void loadParkingPoints(Callable<Void> onSuccess,
                                  Callable<Void> onFinish) {
-        /*RestService restService = RestManager.getInstance();
-        Call<List<ParkingPoint>> call = restService.parkingPoints();
+        String authorizationHeader = LocalSharedStorage.getUserAuthorizationData(context);
+
+        RestService restService = RestManager.getInstance();
+        Call<List<ParkingPoint>> call = restService.parkingPoints(authorizationHeader);
 
         call.enqueue(new AdvancedCallback<List<ParkingPoint>>(context) {
             @Override
@@ -65,8 +68,8 @@ public class ParkingPointsNetworking {
                     e.printStackTrace();
                 }
             }
-        });*/
-        parkingPoints = new ArrayList<>();
+        });
+        /*parkingPoints = new ArrayList<>();
         ParkingPoint p1 = new ParkingPoint();
         p1.setLatitude(40.283076);
         p1.setLongitude(15.028243);
@@ -79,7 +82,7 @@ public class ParkingPointsNetworking {
             onSuccess.call();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public List<ParkingPoint> getParkingPoints() {
@@ -87,8 +90,10 @@ public class ParkingPointsNetworking {
     }
 
     public void addParkingPoint(ParkingPoint parkingPoint, Callable<Void> onSuccess, Callable<Void> onFinish) {
+        String authorizationHeader = LocalSharedStorage.getUserAuthorizationData(context);
+
         RestService restService = RestManager.getInstance();
-        Call<Void> call = restService.addParkingPoint(parkingPoint);
+        Call<Void> call = restService.addParkingPoint(authorizationHeader, parkingPoint);
 
         call.enqueue(new AdvancedCallback<Void>(context) {
             @Override

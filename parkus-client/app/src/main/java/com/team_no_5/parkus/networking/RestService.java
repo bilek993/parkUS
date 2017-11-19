@@ -8,6 +8,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -19,15 +20,16 @@ import retrofit2.http.PUT;
 public interface RestService {
     @Headers({
             "Content-Type: application/json"
+
     })
     @GET("api/ParkingPoints")
-    Call<List<ParkingPoint>> parkingPoints();
+    Call<List<ParkingPoint>> parkingPoints(@Header("Authorization") String authorization);
 
     @Headers({
             "Content-Type: application/json"
     })
     @PUT("api/ParkingPoints")
-    Call<Void> addParkingPoint(@Body ParkingPoint parkingPoint);
+    Call<Void> addParkingPoint(@Header("Authorization") String authorization, @Body ParkingPoint parkingPoint);
 
     @Headers({
             "Content-Type: application/json"
