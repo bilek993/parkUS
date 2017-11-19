@@ -69,6 +69,52 @@ public class LoginNetworking {
         });
     }
 
+    public void login(User user, Callable<Void> onSuccess, Callable<Void> onFinish) {
+        RestService restService = RestManager.getInstance();
+        Call<Boolean> call = restService.login(user);
+
+        call.enqueue(new AdvancedCallback<Boolean>(context) {
+            @Override
+            public void onRetry() {
+                login(user, onSuccess, onFinish);
+            }
+
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                super.onResponse(call, response);
+
+                if (response.isSuccessful()) {
+                    if (response.body()) {
+                        try {
+                            onSuccess.call();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        new AlertDialog.Builder(context)
+                                .setCancelable(false)
+                                .setTitle(context.getString(R.string.login2))
+                                .setMessage(context.getString(R.string.login_error))
+                                .setPositiveButton(context.getText(R.string.ok), null)
+                                .show();
+
+                        finish(onFinish);
+                    }
+                } else {
+                    finish(onFinish);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                super.onFailure(call, t);
+
+                finish(onFinish);
+            }
+        });
+    }
+
     private void finish(Callable<Void> onFinish) {
         try {
             onFinish.call();

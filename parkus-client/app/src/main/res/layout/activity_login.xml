@@ -21,9 +21,11 @@
         app:layout_constraintStart_toStartOf="@+id/guideline3">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login"
+            android:singleLine="true"
             android:textColor="@android:color/white" />
     </android.support.design.widget.TextInputLayout>
 
@@ -46,10 +48,12 @@
         app:layout_constraintTop_toTopOf="@id/guideline2">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:singleLine="true"
             android:textColor="@android:color/white" />
     </android.support.design.widget.TextInputLayout>
 
