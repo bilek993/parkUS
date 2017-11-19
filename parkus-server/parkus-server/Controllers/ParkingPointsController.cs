@@ -16,7 +16,9 @@ namespace parkus_server.Controllers
         {
             using (var database = new DatabaseMainEntities())
             {
+                string username = Thread.CurrentPrincipal.Identity.Name;
                 return database.ParkingPoints
+                    .Where(us => us.User.Username != username)
                     .Select(pp => new ParkingPointItem
                     {
                         Id = pp.Id,
