@@ -40,6 +40,7 @@ namespace parkus_server.Controllers
 
                 string username = Thread.CurrentPrincipal.Identity.Name;
                 User user = database.User.FirstOrDefault(u => u.Username == username);
+                user.Points += 1;
 
                 var parkingPoint = new ParkingPoints
                 {
