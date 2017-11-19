@@ -54,5 +54,15 @@ namespace parkus_server.Controllers
                 database.SaveChanges();
             }
         }
+
+        public void Delete(int id)
+        {
+            using (var database = new DatabaseMainEntities())
+            {
+                ParkingPoints point = database.ParkingPoints.FirstOrDefault(pp => pp.Id == id);
+                database.ParkingPoints.Remove(point);
+                database.SaveChanges();
+            }
+        }
     }
 }
