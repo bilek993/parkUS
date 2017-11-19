@@ -13,6 +13,11 @@ namespace parkus_server.Models
                     user.Username == null || user.Username == "" || user.Surname == null || user.Surname == "");
         }
 
+        public static bool VerifyCredentials(UserItem user)
+        {
+            return VerifyCredentials(user.Username, user.Password);
+        }
+
         public static bool VerifyCredentials(string username, string password)
         {
             string passwordHashed = Sha256Hashing.Hash(password);

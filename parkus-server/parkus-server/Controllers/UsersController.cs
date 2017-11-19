@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace parkus_server.Controllers
 {
-    public class UserController : ApiController
+    public class UsersController : ApiController
     {
         public bool Put([FromBody] UserItem userNew)
         {
@@ -35,6 +35,16 @@ namespace parkus_server.Controllers
             }
 
             return true;
+        }
+
+        public bool Post([FromBody] UserItem user)
+        {
+            if (UserDetailsVeryfication.CheckForEmptValues(user))
+            {
+                return false;
+            }
+
+            return UserDetailsVeryfication.VerifyCredentials(user);
         }
     }
 }
